@@ -42,8 +42,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Logout handler
   elements.logoutBtn.addEventListener('click', () => {
+    // Clear all session data
     localStorage.removeItem('jwt');
-    window.location.href = 'login.html';
+    sessionStorage.clear();
+
+    // Clear browser history to prevent back navigation
+    if (window.history && window.history.pushState) {
+      window.history.pushState('logout', null, 'login.html');
+    }
+
+    // Force redirect (replace prevents back navigation)
+    window.location.replace('login.html');
+
   });
 
   try {
