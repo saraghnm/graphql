@@ -14,21 +14,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Clear browser cache headers
   if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD) {
-    // Page was refreshed - check session validity
-    const jwt = localStorage.getItem('jwt');
-    if (!jwt) {
-      window.location.replace('login.html');
-      return;
-    }
 
-    // Optional: Verify token is still valid with a quick API call
-    try {
-      await graphqlRequest(`{ user { id } }`, jwt);
-    } catch (error) {
+    // Detect page refresh and force re-login
+    if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
       localStorage.removeItem('jwt');
       window.location.replace('login.html');
-      return;
     }
+
   }
   // DOM Elements
   const elements = {
