@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
     const form = document.getElementById('login-form');
     const errorMsg = document.getElementById('error-message');
     const submitBtn = form.querySelector('button[type="submit"]');
