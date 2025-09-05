@@ -2,6 +2,34 @@ import { graphqlRequest } from './graphql.js';
 import { renderXPChart, renderAuditChart, renderPassFailChart, renderXPByProjectChart } from './graphs.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  if (window.history && window.history.pushState) {
+    // Prevent back button navigation to login
+    window.history.pushState('forward', null, window.location.href);
+    window.addEventListener('popstate', function (event) {
+      // Force logout and redirect to login
+      localStorage.removeItem('jwt');
+      window.location.replace('login.html'); // replace instead of assign prevents back navigation
+    });
+  }
+
+  // Clear browser cache headers
+  if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD) {
+    // Page was refreshed - check session validity
+    const jwt = localStorage.getItem('jwt');
+    if (!jwt) {
+      window.location.replace('login.html');
+      return;
+    }
+
+    // Optional: Verify token is still valid with a quick API call
+    try {
+      await graphqlRequest(`{ user { id } }`, jwt);
+    } catch (error) {
+      localStorage.removeItem('jwt');
+      window.location.replace('login.html');
+      return;
+    }
+  }
   // DOM Elements
   const elements = {
     userId: document.getElementById('user-id'),
