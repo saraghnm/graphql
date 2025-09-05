@@ -1,0 +1,272 @@
+/* Profile Data Cards */
+#profile-data {
+  max-width: 1200px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.card {
+  background: rgba(30, 41, 59, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #a855f7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  min-height: 1.5rem;
+}
+
+/* Loading animation - inherits font from global */
+.card p.loading {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  color: transparent;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Charts Section */
+#charts {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+#charts h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #e2e8f0;
+  text-align: center;
+  font-weight: 700;
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.chart {
+  background: rgba(30, 41, 59, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #a855f7, #f59e0b);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.chart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.chart:hover::before {
+  opacity: 1;
+}
+
+.chart h3 {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #e2e8f0;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Chart loading state - inherits font from global */
+.chart-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.chart-loading::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid #374151;
+  border-top: 2px solid #06b6d4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Chart content area */
+.chart>div {
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* No data message styling - inherits font from global */
+.chart p {
+  color: #94a3b8;
+  font-style: italic;
+  margin: 40px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .chart-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  #profile-data {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px auto;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .chart {
+    padding: 20px;
+  }
+
+  #charts {
+    margin: 40px auto;
+    padding: 15px;
+  }
+
+  #charts h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  #profile-data {
+    grid-template-columns: 1fr;
+    padding: 0 15px;
+  }
+
+  .chart-container {
+    padding: 0 10px;
+  }
+}
+
+/* Success/Error states */
+.card.success p {
+  color: #10b981;
+}
+
+.card.warning p {
+  color: #f59e0b;
+}
+
+.card.error p {
+  color: #ef4444;
+}
+
+/* Fade in animation for loaded content */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card.loaded {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.chart.loaded {
+  animation: fadeIn 0.5s ease-out;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <h1>My Profile</h1>
+    <nav>
+      <button id="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <!-- Profile Section -->
+  <main>
+    <section id="profile-data">
+      <!-- User ID -->
+      <div class="card">
+        <h2>User ID</h2>
+        <p id="user-id">Loading...</p>
+      </div>
+
+      <!-- Username -->
+      <div class="card">
+        <h2>Username</h2>
+        <p id="user-login">Loading...</p>
+      </div>
+
+      <!-- Total XP -->
+      <div class="card">
+        <h2>Total XP</h2>
+        <p id="xp-amount">Loading...</p>
+      </div>
+
+      <!-- Audit Ratio -->
+      <div class="card">
+        <h2>Audit Ratio</h2>
+        <p id="audit-ratio">Loading...</p>
+      </div>
+
+      <!-- Projects Stats -->
+      <div class="card">
+        <h2>Projects Completed</h2>
+        <p id="projects-completed">Loading...</p>
+      </div>
+
+      <!-- Pass/Fail Ratio -->
+      <div class="card">
+        <h2>Success Rate</h2>
+        <p id="success-rate">Loading...</p>
+      </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section id="charts">
+      <h2>Progress & Insights</h2>
+      <div class="chart-container">
+        <div class="chart">
+          <h3>XP Progress</h3>
+          <div id="xp-chart"></div>
+        </div>
+        <div class="chart">
+          <h3>Audit Ratio</h3>
+          <div id="audit-chart"></div>
+        </div>
+        <div class="chart">
+          <h3>Pass/Fail Rate</h3>
+          <div id="pass-fail-chart"></div>
+        </div>
+        <div class="chart">
+          <h3>XP by Project</h3>
+          <div id="xp-by-project-chart"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>

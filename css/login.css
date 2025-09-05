@@ -1,0 +1,272 @@
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0d1321 0%, #1a1f29 50%, #0f172a 100%);
+    padding: 20px;
+}
+
+.login-card {
+    background: rgba(26, 31, 41, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 3rem 2.5rem;
+    border-radius: 24px;
+    box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #06b6d4, #a855f7, #3b82f6);
+    background-size: 200% 100%;
+    animation: gradientShift 6s ease infinite;
+}
+
+.login-title {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(270deg, #3b82f6, #06b6d4, #a855f7, #3b82f6);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease infinite;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    position: relative;
+}
+
+.login-title::after {
+    content: "✨";
+    position: absolute;
+    right: -30px;
+    top: -5px;
+    font-size: 1.5rem;
+    animation: sparkle 2s infinite ease-in-out;
+    filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.5));
+}
+
+/* Subtitle */
+.login-subtitle {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: scale(0.8) rotate(0deg);
+    filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.3));
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2) rotate(20deg);
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.7));
+  }
+}
+
+/* Form styling */
+.login-form {
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+   width: 100%;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+/* Labels - removed font-family, inherits from global */
+.login-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  letter-spacing: 0.025em;
+}
+
+/* Enhanced input fields - removed font-family, inherits from global */
+.login-card input[type="text"],
+.login-card input[type="password"],
+.login-card input[type="email"] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #334155;
+  background-color: rgba(15, 23, 42, 0.8);
+  color: #f1f5f9;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.login-card input[type="text"]::placeholder,
+.login-card input[type="password"]::placeholder,
+.login-card input[type="email"]::placeholder {
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* Focus states */
+.login-card input[type="text"]:focus,
+.login-card input[type="password"]:focus,
+.login-card input[type="email"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 
+    0 0 0 3px rgba(59, 130, 246, 0.1),
+    0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: rgba(15, 23, 42, 0.95);
+  transform: translateY(-1px);
+}
+
+/* Enhanced button - removed font-family, inherits from global */
+.btn-primary {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  /* Fixed spacing - more space above button */
+  margin-top: 1.5rem;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #0891b2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  transition: transform 0.1s;
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+}
+
+/* Error message - removed font-family, inherits from global */
+.error-message {
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: none;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Additional visual enhancements */
+.form-group {
+  position: relative;
+}
+
+.form-group input:focus + .focus-ring {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 2rem 1.5rem;
+    margin: 10px;
+    border-radius: 16px;
+  }
+  
+  .login-title {
+    font-size: 1.875rem;
+  }
+  
+  .login-title::after {
+    right: -25px;
+    font-size: 1.25rem;
+  }
+  
+  .btn-primary {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+  
+  .login-card input[type="text"],
+  .login-card input[type="password"],
+  .login-card input[type="email"] {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Loading state animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.btn-primary.loading {
+  animation: pulse 1.5s infinite;
+}
